@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<inkscape-extension>
+  <name>INX Tutorial</name>
+  <id>fruchti.tutorial.inx_tutorial</id>
+  <dependency type="executable" location="extensions">inx_tutorial.py</dependency>
+
+  <param name="title" type="description" appearance="header">This is a title in the popup </param>
+  <param name="description" type="description" indent="-1">This is some label for a description </param>
+  <param name="mybool" type="boolean" gui-text="This is mybool"></param>
+  <param name="mystring" type="string" gui-text="This is mystring"></param>
+  <param name="myint" type="int" min="0" max="100" gui-text="This is myint"></param>
+  <param name="myfloat" type="float" min="-100.0" max="100.0" gui-text="This is myfloat"></param>
+  <param name="myenum" type="enum" _gui-text="Select:">
+    <item value="first selection">first selection</item>
+    <item value="second selection">second selection</item>
+    <item value="another selection">another selection</item>
+  </param>
+
+  <effect needs-live-preview="false">
+    <object-type>all</object-type>
+    <effects-menu>
+      <submenu _name="Tutorials"/>
+    </effects-menu>
+  </effect>
+
+  <script>
+    <command reldir="extensions" interpreter="python">inx_tutorial.py</command>
+  </script>
+</inkscape-extension>
