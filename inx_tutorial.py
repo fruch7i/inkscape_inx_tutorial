@@ -5,50 +5,32 @@
 Inkscape extension to introduce basic inx file communication
 """
 
+import os
 import inkex
 
 class InxTutorial(inkex.Effect):
-	def __init__(self):
-		inkex.Effect.__init__(self)
-		self.arg_parser.add_argument(
-			'-b', '--mybool',
-			type=bool,
-			dest='mybool',
-			help='This is help text for mybool'
-			)
-		self.arg_parser.add_argument(
-			'-s', '--mystring',
-			type=str,
-			dest='mystring',
-			help='This is help text for mystring'
-			)
-		self.arg_parser.add_argument(
-			'-i', '--myint',
-			type=int,
-			dest='myint',
-			help='This is help text for myint'
-			)
-		self.arg_parser.add_argument(
-			'-f', '--myfloat',
-			type=float,
-			dest='myfloat',
-			help='This is help text for myfloat'
-			)
-		self.arg_parser.add_argument(
-			'-e', '--myenum',
-			type=str,
-			dest='myselection',
-			help='This is help text for myenum'
-			)
+    def add_arguments(self, pars):
+        pars.add_argument("--mystring", type=str, default="",
+            help="This is help text for mystring")
+        pars.add_argument("--mypath", default=os.path.expanduser("~"),
+            help="This is help text for mypath")
+        pars.add_argument("--mybool", type=inkex.Boolean, default=False,
+            help="This is help text for mybool")
+        pars.add_argument("--myint", type=int, default=0,
+            help="This is help text for myint")
+        pars.add_argument("--myfloat", type=float, default=0.0,
+            help="This is help text for myfloat")
+        pars.add_argument("--myoptiongroup", default="first selection",
+            help="This is help text for myselection")
 
-	def effect(self):
-		inkex.errormsg(f'mybool: {self.options.mybool}')
-		inkex.errormsg(f'mystring: {self.options.mystring}')
-		inkex.errormsg(f'myint: {self.options.myint}')
-		inkex.errormsg(f'myfloat: {self.options.myfloat}')
-		inkex.errormsg(f'selected item: {self.options.myselection}')
-		inkex.errormsg(f'list of currently selected inkscape objects: {self.options.ids}')
+    def effect(self):
+        inkex.errormsg(f'mybool: {self.options.mybool}')
+        inkex.errormsg(f'mystring: {self.options.mystring}')
+        inkex.errormsg(f'myint: {self.options.myint}')
+        inkex.errormsg(f'myfloat: {self.options.myfloat}')
+        inkex.errormsg(f'selected item: {self.options.myoptiongroup}')
+        inkex.errormsg(f'ids of currently selected inkscape objects: {self.options.ids}')
+        inkex.errormsg(f'list of currently selected inkscape objects: {self.svg.selected}')
 
 if __name__ == '__main__':
-	inx_tutorial = InxTutorial()
-	inx_tutorial.run()
+    InxTutorial().run()

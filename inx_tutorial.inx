@@ -4,20 +4,22 @@
   <id>fruchti.tutorial.inx_tutorial</id>
   <dependency type="executable" location="extensions">inx_tutorial.py</dependency>
 
-  <param name="title" type="description" appearance="header">This is a title in the popup </param>
-  <param name="description" type="description" indent="-1">This is some label for a description </param>
-  <param name="mybool" type="boolean" gui-text="This is mybool"></param>
+  <label appearance="header">This is a title in the popup </label>
+  <label>This is some label for a description text.</label>
+  <label>This is a new line in the description text.</label>
   <param name="mystring" type="string" gui-text="This is mystring"></param>
+  <param name="mypath" type="path" mode="folder" gui-text="This is mypath"></param>
+  <param name="mybool" type="boolean" gui-text="This is mybool"></param>
   <param name="myint" type="int" min="0" max="100" gui-text="This is myint"></param>
   <param name="myfloat" type="float" min="-100.0" max="100.0" gui-text="This is myfloat"></param>
-  <param name="myenum" type="enum" _gui-text="Select:">
-    <item value="first selection">first selection</item>
-    <item value="second selection">second selection</item>
-    <item value="another selection">another selection</item>
+  <param name="myoptiongroup" type="optiongroup" _gui-text="Select myoption:">
+    <option value="first selection">first selection</option>
+    <option value="second selection">second selection</option>
+    <option value="another selection">another selection</option>
   </param>
 
-  <effect needs-live-preview="false">
-    <object-type>all</object-type>
+  <effect>
+    <object-type>path</object-type>
     <effects-menu>
       <submenu _name="Tutorials"/>
     </effects-menu>
